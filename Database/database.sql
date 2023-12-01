@@ -34,7 +34,6 @@ VALUES
     ('elefante', 3, 12, 8),
     ('flor', 1, 6, 4),
     ('casa', 2, 9, 4),
-    ('computadora', 3, 15, 12),
     ('perro', 2, 7, 5),
     ('ratón', 1, 5, 5),
     ('libro', 2, 8, 5),
@@ -58,3 +57,13 @@ VALUES
     ('escalera', 3, 11, 8),
     ('camión', 2, 9, 6),
     ('naranja', 3, 13, 7);
+
+-- Insertar palabras en el banco_palabras con tamaños de 9, 10 y 11
+INSERT INTO banco_palabras (bapa_palabra, bapa_nivel, bapa_puntos, bapa_tamanopalabra)
+VALUES
+    ('mariposa', 3, 15, 9),    -- Nivel 3, 15 puntos, tamaño 9
+    ('aventura', 3, 16, 10),   -- Nivel 3, 16 puntos, tamaño 10
+    ('elefante', 3, 18, 11),   -- Nivel 3, 18 puntos, tamaño 11
+    ('camiseta', 2, 10, 9),    -- Nivel 2, 10 puntos, tamaño 9
+    ('computadora', 3, 17, 11), -- Nivel 3, 17 puntos, tamaño 11
+    ('caballero', 2, 12, 10);   -- Nivel 2, 12 puntos, tamaño 10
