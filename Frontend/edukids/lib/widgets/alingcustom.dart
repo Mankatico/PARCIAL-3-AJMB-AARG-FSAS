@@ -1,5 +1,5 @@
 import 'package:edukids/theme/apptheme.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:edukids/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class alingCustom extends StatelessWidget {
@@ -34,7 +34,7 @@ class alingCustom extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
-                "Con este juego enseñaremos de una manera didactica como podemos divertinos aprendiendo",
+                "¡Hola chicos! Aprendamos de forma divertida con Mario y amigos. Exploraremos dictados, unidades y decenas juntos. \n¡Vamos a jugar y aprender!",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 17,
@@ -45,55 +45,7 @@ class alingCustom extends StatelessWidget {
             SizedBox(
               height: 60,
             ),
-            Material(
-              color: AppTheme.primaryColor,
-              borderRadius: BorderRadius.circular(10),
-              child: InkWell(
-                onTap: () {
-                  showCupertinoDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CupertinoAlertDialog(
-                        title: Text("Ingrese su nombre de usuario \npor favor"),
-                        content: CupertinoTextField(
-                          placeholder: "Nombre",
-                          
-                        ),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: Text("Cancelar"),
-                            onPressed: () {
-                              Navigator.pop(
-                                  context); 
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: Text("Aceptar"),
-                            onPressed: () {
-                              Navigator.pop(context); 
-                              Navigator.pushNamed(
-                                  context, 'Home'); 
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 80),
-                  child: Text(
-                    'Comencemos',
-                    style: TextStyle(
-                      color: AppTheme.secondaryColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            MaterialCustom(),
           ],
         ),
       ),
