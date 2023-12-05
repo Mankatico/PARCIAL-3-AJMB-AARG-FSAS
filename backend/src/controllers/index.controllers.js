@@ -8,60 +8,112 @@ const pool = new Pool({
     port: '5432'
 });
 
-const getUserById = async(req, res) =>{
+/**
+ * Get a user by ID
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const getUserById = async (req, res) => {
     const id = req.params.id;
-    const response = await pool.query('select * from users where user_id = $1',[id]);
+    const response = await pool.query('SELECT * FROM users WHERE user_id = $1', [id]);
     res.json(response.rows);
 };
 
+/**
+ * Get all users
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 const getUsers = async (req, res) => {
     const response = await pool.query('SELECT * FROM users');
     res.status(200).json(response.rows);
 };
 
-const createUsers = async (req, res) => {
+/**
+ * Create a new user
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const createUser = async (req, res) => {
     try {
         const { name } = req.body;
         const response = await pool.query('INSERT INTO users (user_name, user_puntos) VALUES ($1, $2)', [name, 0]);
         console.log(response);
-        res.send('User created Succesfully');
+        res.send('User created successfully');
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Internal Server Error');
     }
 };
 
-const getPalabrasByLenght = async(req,res)=>{
-    const lenght = req.params.lenght;
-    const response = await pool.query("select * from banco_palabras where bapa_tamanopalabra = $1",[lenght]);
+/**
+ * Get words by length
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const getWordsByLength = async (req, res) => {
+    const length = req.params.length;
+    const response = await pool.query("SELECT * FROM banco_palabras WHERE bapa_tamanopalabra = $1", [length]);
     res.json(response.rows);
-}
+};
 
-const getPalabras = async (req, res) => {
+/**
+ * Get all words
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const getWords = async (req, res) => {
     const response = await pool.query('SELECT * FROM banco_palabras');
     res.status(200).json(response.rows);
 };
 
-const deleteUser = async (req,res) =>{
+/**
+ * Delete a user
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const deleteUser = async (req, res) => {
     const id = req.params.id;
-    const response = await pool.query("delete from users where user_id = $1",[id]);
-    res.json('User ID: '+id+' deleted successfully');
+    const response = await pool.query("DELETE FROM users WHERE user_id = $1", [id]);
+    console.log(response);
+    res.json('User ID: ' + id + ' deleted successfully');
 };
 
-const updateUser = async (req,res)=>{
+/**
+ * Update a user's points
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const updateUser = async (req, res) => {
     const id = req.params.id;
-    const {puntos} = req.body;
-    const response = await pool.query("update users set user_puntos = $1 where user_id=$2",[puntos,id])
+    const { puntos } = req.body;
+    const response = await pool.query("UPDATE users SET user_puntos = $1 WHERE user_id=$2", [puntos, id]);
     console.log(response);
     res.send('User Updated Successfully');
 };
 
+/**
+ * Get words by level
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+const getWordByLevel = async (req, res) => {
+    const id = req.params.id;
+    const response = await pool.query("SELECT * FROM banco_palabras WHERE bapa_nivel = $1", [id]);
+    if (response.rows.length > 0) {
+        res.status(200).json(response.rows);
+    } else {
+        res.send("Word not found");
+    }
+};
+
 module.exports = {
     getUsers,
-    createUsers,
-    getPalabras,
+    createUser,
+    getWords,
     getUserById,
-    getPalabrasByLenght,
+    getWordsByLength,
     deleteUser,
-    updateUser
+    updateUser,
+    getWordByLevel
 };
