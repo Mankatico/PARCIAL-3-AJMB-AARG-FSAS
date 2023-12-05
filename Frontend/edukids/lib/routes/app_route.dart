@@ -8,7 +8,7 @@ class AppRoutes {
 
   static final menuOptions = <MenuOption>[
     // todo:borrar home
-    MenuOption(route: 'Home', icon:Icons.home, nombre:'Home Screen', screen: const HomeScreen())
+    MenuOption(route: 'Home', icon:Icons.home, nombre:'Home Screen', screen: HomeScreen())
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
@@ -24,6 +24,6 @@ class AppRoutes {
   }
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    return MaterialPageRoute(builder: (context) => const HomeScreen());
+    return MaterialPageRoute(builder: (context) => HomeScreen());
   }
 }

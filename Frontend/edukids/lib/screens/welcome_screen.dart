@@ -19,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.666,
-                decoration: BoxDecoration(color: AppTheme.primaryColor),
+                decoration: BoxDecoration(color: AppTheme.primaryColorMario),
               ),
             ),
             alingCustom(),

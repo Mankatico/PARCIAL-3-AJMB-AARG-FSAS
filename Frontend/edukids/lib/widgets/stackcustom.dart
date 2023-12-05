@@ -16,7 +16,7 @@ class stackCustom extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height / 1.6,
           decoration: const BoxDecoration(
-            color: AppTheme.primaryColor,
+            color: AppTheme.primaryColorMario,
             borderRadius:
                 BorderRadius.only(bottomRight: Radius.circular(70)),
           ),

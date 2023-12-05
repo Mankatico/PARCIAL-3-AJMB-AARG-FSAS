@@ -10,7 +10,7 @@ class MaterialCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppTheme.primaryColor,
+      color: AppTheme.primaryColorMario,
       borderRadius: BorderRadius.circular(10),
       child: InkWell(
         onTap: () {
